@@ -1,7 +1,10 @@
 package haken;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Main {
 
@@ -10,8 +13,10 @@ public class Main {
 
         webDriver.get("http://www.thoughtworks.com");
 
-        String pageTitle = webDriver.getTitle();
+        WebElement element = webDriver.findElement(By.tagName("h1"));
 
-        webDriver.close();
+        System.out.println(element.getAttribute("class"));
+        System.out.println(element.getText());
+//        webDriver.quit();
     }
 }
