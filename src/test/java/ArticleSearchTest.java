@@ -1,15 +1,22 @@
-package haken;
-
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class Main {
+import static org.junit.Assert.*;
 
-    public static void main(String[] args) {
+public class ArticleSearchTest {
 
+    /*
+        3 stages inside a test (AAA)
+        Arrange
+        Act
+        Assert
+     */
+
+    @Test
+    public void shouldHaveCorrectPageTitle() {
         // Create a chrome driver to drive the browser
         WebDriver driver = new ChromeDriver();
 
@@ -23,13 +30,16 @@ public class Main {
         driver.findElement(By.className("icon-search")).click();
 
         // Get the title of the search results page and article title
-        System.out.println(driver.getTitle());
-        System.out.println(driver.findElement(By.className("search-result__title")));
+//        System.out.println(driver.getTitle());
+//        System.out.println(driver.findElement(By.className("search-result__title")));
 
-//        WebElement element = driver.findElement(By.tagName("h1"));
+        driver.quit();
 
-//        System.out.println(element.getAttribute("class"));
-//        System.out.println(element.getText());
-//        driver.quit();
+        assertEquals("Search | ThoughtWorks", driver.getTitle());
+    }
+
+    @Test
+    public void shouldHaveTechnologyRadarBannerOnTheHomePage() {
+
     }
 }
