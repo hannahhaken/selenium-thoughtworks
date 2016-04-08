@@ -1,12 +1,27 @@
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-
 import static org.junit.Assert.*;
 
 public class ArticleSearchTest {
+
+    private static WebDriver driver;
+
+    @BeforeClass
+    public static void setUp() {
+        // Create a chrome driver to drive the browser
+        driver = new ChromeDriver();
+    }
+
+    @AfterClass
+    public static void tearDown() {
+        driver.quit();
+    }
 
     /*
         3 stages inside a test (AAA)
@@ -14,13 +29,16 @@ public class ArticleSearchTest {
         Act
         Assert
      */
-
     @Test
     public void shouldHaveCorrectPageTitle() {
-        // Create a chrome driver to drive the browser
-        WebDriver driver = new ChromeDriver();
-
         // Open Thoughtworks page
+        driver.get("http://www.thoughtworks.com");
+
+        assertEquals("Agile Development and Experience Design | ThoughtWorks", driver.getTitle());
+    }
+
+    @Test
+    public void shouldHaveArticleRelatedToSearchTerm() {
         driver.get("http://www.thoughtworks.com");
 
         // Find the search field and type "Darren Haken"
@@ -30,16 +48,8 @@ public class ArticleSearchTest {
         driver.findElement(By.className("icon-search")).click();
 
         // Get the title of the search results page and article title
-//        System.out.println(driver.getTitle());
-//        System.out.println(driver.findElement(By.className("search-result__title")));
+        WebElement searchResult = driver.findElement(By.className("search-result__title"));
 
-        driver.quit();
-
-        assertEquals("Search | ThoughtWorks", driver.getTitle());
-    }
-
-    @Test
-    public void shouldHaveTechnologyRadarBannerOnTheHomePage() {
-
+        assertEquals("Moving to the Phoenix Server Pattern Part 3: Evolving a Recovery ...", searchResult.getText());
     }
 }
