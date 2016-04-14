@@ -52,4 +52,41 @@ public class ArticleSearchTest {
 
         assertEquals("Moving to the Phoenix Server Pattern Part 3: Evolving a Recovery ...", searchResult.getText());
     }
+
+    @Test
+    public void shouldHaveTechnologyRadarAsFirstTileOnHomepage() {
+        /*
+            On www.thoughtworks.com homepage there is a series of tiles.
+             This test should confirm that the first tile (top left) is the technology radar.
+             This is important as it's they want to promote this the most right now.
+         */
+
+    }
+
+    @Test
+    public void shouldBeAbleToSignUpForTheThoughtWorksNewsLetter() {
+        /*
+            On www.thoughtworks.com homepage on the footer there is a field to sign up for a newsletter.
+             Confirm that you can sign up for the news letter.
+             Hint 1: use a fake email address
+             Hint 2: When you sign up for the news letter text appears below the textbox saying 'Thank you for signing up to our monthly perspectives newsletter.'
+         */
+    }
+
+    @Test
+    public void shouldNavigateToTheNewsSectionWhenClickingMoreNewsOnTheHomePage() {
+        /*
+            On www.thoughtworks.com homepage there is a news section with a button with the text 'More news'.
+            If you click it verify that you are redirected to the news section
+         */
+    }
+
+    @Test
+    public void shouldBeAbleToCompleteTheContactUsFormOnTheContactUsPage() {
+        /*
+            On www.thoughtworks.com homepage there is a Contact Us button in the header of the page
+            If you click it and navigate to the Contact Us Page you will be presented with a form.
+            You need to fill in the form with some fake details and confirm the message was sent successfully
+         */
+    }
 }
